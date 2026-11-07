@@ -1,0 +1,4 @@
+Model,Best CV Accuracy,Test Accuracy,Best Parameters
+Logistic Regression,0.9037499999999999,0.955,"{'classifier__C': 0.01, 'classifier__solver': 'liblinear'}"
+KNN,0.94625,0.96,"{'classifier__n_neighbors': 7, 'classifier__weights': 'uniform'}"
+SVC,0.9487500000000001,0.975,"{'classifier__C': 10, 'classifier__kernel': 'rbf'}"
