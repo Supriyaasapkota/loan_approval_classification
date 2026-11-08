@@ -26,7 +26,6 @@ page = st.sidebar.radio(
 )
 
 
-# Load Machine Learning Models
 models = {
     "Logistic Regression": joblib.load("logistic_model.joblib"),
     "KNN": joblib.load("knn_model.joblib"),
@@ -35,7 +34,6 @@ models = {
 }
 
 
-# Load Model Comparison
 comparison = pd.read_csv("model_comparison.csv")
 
 
@@ -107,6 +105,26 @@ elif page == "Dataset":
 
     st.write("Total Records:", df.shape[0])
     st.write("Total Columns:", df.shape[1])
+
+    st.subheader("Data Types")
+
+    st.dataframe(
+        df.dtypes.astype(str).reset_index().rename(
+            columns={"index": "Column", 0: "Data Type"}
+        )
+    )
+
+    st.subheader("Missing Values")
+
+    st.dataframe(
+        df.isnull().sum().reset_index().rename(
+            columns={"index": "Column", 0: "Missing Values"}
+        )
+    )
+
+    st.subheader("Statistical Summary")
+
+    st.dataframe(df.describe())
 
 
 elif page == "EDA":
@@ -306,7 +324,6 @@ elif page == "EDA":
         st.dataframe(filtered_df.describe())
 
 
-# MODEL COMPARISON
 elif page == "Model Comparison":
 
     st.title("Model Comparison")
@@ -331,7 +348,6 @@ elif page == "Model Comparison":
     )
 
 
-# PREDICTION
 elif page == "Prediction":
 
     st.title("Loan Approval Prediction")
